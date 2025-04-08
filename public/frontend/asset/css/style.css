@@ -1,0 +1,848 @@
+:root {
+    --header-height: 40px;
+    --main-bg: #e8e8e8;
+    --main-hover: #d0d0d0;
+    --main-transition: all 0.5s;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: unset;
+}
+input {
+    outline: none;
+}
+.container {
+    max-width: 1240px;
+    margin: auto;
+}
+.row-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.row-grid {
+    display: flex;
+    justify-content: space-between;
+}
+.p-to-top {
+    padding-top: var(--header-height);
+}
+/* Header */
+header {
+    background-color: var(--main-bg);
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    transition: var(--main-transition);
+}
+header.active {
+    background-color: rgba(170, 137, 137, 0.8); /* Đổi màu nền */
+    padding: 10px 0; /* Giảm padding khi scroll */
+}
+header .row-flex {
+    align-items: center;
+}
+.header-logo img {
+    width: 80px;
+}
+.header-nav nav ul {
+    display: flex;
+}
+.header-nav nav ul li {
+    padding: 0 10px;
+}
+.header-nav nav ul li a {
+    line-height: var(--header-height);
+    font-size: smaller;
+}
+.header-nav nav ul li:hover {
+    background-color: var(--main-hover);
+    transition: var(--main-transition);
+}
+.header-nav nav ul li:hover a {
+    color: black;
+}
+.header-search {
+    position: relative;
+}
+.header-search i {
+    position: absolute;
+    left: 6px;
+    transform: translateY(50%);
+}
+.header-search input {
+    height: 30px;
+    border: 1px solid black;
+    padding-left: 20px;
+    border-radius: 15px;
+}
+.header-cart i {
+    font-size: larger;
+    cursor: pointer;
+    position: relative;
+}
+.header-cart i::after {
+    position: absolute;
+    content: attr(number);
+    display: flex;
+    width: 16px;
+    height: 16px;
+    background-color: black;
+    border-radius: 50%;
+    top: -8px;
+    left: 14px;
+    color: #ddd;
+    justify-content: center;
+    font-size: 8px;
+    align-items: center;
+    text-align: center;
+}
+/* End Header */
+
+/* Slider */
+.slider-items {
+    width: 100vw;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+}
+
+/* Định vị các nút dưới chân carousel */
+#carouselExampleAutoplaying .carousel-control-prev,
+#carouselExampleAutoplaying .carousel-control-next {
+    top: auto;
+    bottom: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: all 0.3s ease; /* Hiệu ứng mượt mà */
+}
+
+/* Đặt vị trí cụ thể cho từng nút */
+#carouselExampleAutoplaying .carousel-control-prev {
+    left: 50%;
+    transform: translateX(-60px);
+}
+
+#carouselExampleAutoplaying .carousel-control-next {
+    right: 50%;
+    transform: translateX(60px);
+}
+
+/* Tùy chỉnh icon bên trong */
+#carouselExampleAutoplaying .carousel-control-prev-icon,
+#carouselExampleAutoplaying .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%);
+}
+
+/* Hiệu ứng hover */
+#carouselExampleAutoplaying .carousel-control-prev:hover,
+#carouselExampleAutoplaying .carousel-control-next:hover {
+    background-color: #007bff; /* Màu xanh dương nổi bật */
+    opacity: 1;
+    transform: translateX(-60px) scale(1.1); /* Tăng kích thước nhẹ và giữ vị trí */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Thêm bóng */
+}
+
+#carouselExampleAutoplaying .carousel-control-next:hover {
+    transform: translateX(60px) scale(1.1); /* Điều chỉnh riêng cho nút next */
+}
+/* End Slider */
+
+/* Product Detail */
+.product-detail {
+    padding-top: 100px;
+}
+
+.product-detail .product-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.product-detail .product-title i {
+    padding: 0 10px 10px 10px;
+    color: black;
+}
+.product-detail .product-title p:first-child::before {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 14px;
+    background-color: var(--main-bg);
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.product-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+}
+
+.product-title i {
+    color: #007bff;
+}
+
+.product-detail-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.main-image {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.product-image-items {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.product-image-items img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition:
+        transform 0.2s ease,
+        border 0.2s ease;
+}
+
+.product-image-items img:hover {
+    transform: scale(1.1);
+    border: 2px solid #007bff;
+}
+
+.product-image-items img.active {
+    border: 2px solid #ff6600;
+    transform: scale(1.15);
+}
+.product-detail .product-right-des ul {
+    background-color: var(--main-bg);
+    border-radius: 10px;
+    max-width: 400px;
+}
+.product-detail .product-right-des ul li {
+    list-style: disc;
+}
+.product-quatity-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+}
+.product-quatity-input {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: fit-content;
+}
+
+.product-quatity-input i {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    background: #f8f8f8;
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+
+.product-quatity-input input {
+    width: 50px;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.product-detail .product-right-addcart button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Đảm bảo hàng chứa các ô sản phẩm dùng Flexbox */
+.product .carousel-item .row {
+    display: flex;
+    flex-wrap: nowrap; /* Không xuống hàng */
+    justify-content: space-between; /* Phân bố đều khoảng cách */
+    width: 100%; /* Chiếm toàn bộ chiều rộng carousel */
+}
+
+/* Định dạng từng ô sản phẩm với chiều rộng và chiều cao cố định */
+.product .carousel-item .col {
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo cột */
+    flex: 1 1 0; /* Chiều rộng bằng nhau cho tất cả ô */
+    height: 340px; /* Chiều cao cố định để chứa cả 2 giá */
+    padding: 10px; /* Khoảng cách bên trong */
+    box-sizing: border-box;
+    border: 1px solid #ddd; /* Giữ viền */
+    border-radius: 10px; /* Giữ bo góc */
+    background-color: #fff; /* Nền trắng */
+    margin: 0 5px; /* Khoảng cách giữa các ô */
+    overflow: hidden; /* Ẩn nội dung tràn */
+}
+
+/* Ảnh cố định kích thước */
+.product .carousel-item img {
+    width: 100%;
+    height: 200px; /* Chiều cao cố định cho ảnh */
+    object-fit: contain; /* Giữ tỷ lệ ảnh */
+    display: block;
+    background-color: #f8f9fa; /* Nền ảnh */
+}
+
+/* Container cho nội dung văn bản */
+.product .carousel-item .col .content {
+    flex-grow: 1; /* Chiếm toàn bộ không gian còn lại */
+    display: flex;
+    flex-direction: column;
+    height: 120px; /* Chiều cao cố định cho phần nội dung */
+    overflow: hidden; /* Ẩn nội dung tràn */
+}
+
+/* Tiêu đề chính */
+.product .carousel-item .col .content h6 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    margin: 10px 0 5px; /* Khoảng cách trên dưới */
+    height: 40px; /* Chiều cao cố định cho tiêu đề */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Giới hạn 2 dòng */
+    -webkit-box-orient: vertical;
+}
+
+/* Giá bán gốc */
+.product .carousel-item .col .content .original-price {
+    font-size: 12px;
+    color: #888; /* Màu xám cho giá gốc */
+    text-decoration: line-through; /* Gạch ngang giá gốc */
+    margin: 0;
+    height: 20px; /* Chiều cao cố định */
+    line-height: 20px;
+}
+
+/* Giá giảm */
+.product .carousel-item .col .content .discounted-price {
+    font-weight: 700;
+    color: red;
+    font-size: 16px;
+    margin: 5px 0 0; /* Khoảng cách nhỏ với giá gốc */
+    height: 20px; /* Chiều cao cố định */
+    line-height: 20px;
+    padding-bottom: 10px;
+}
+
+/* Các thẻ bổ sung (nếu có thêm h6 hoặc p trong .content) */
+.product .carousel-item .col .content h6:not(:first-child),
+.product .carousel-item .col .content p:not(:first-child):not(.original-price):not(.discounted-price) {
+    font-size: 12px; /* Kích thước nhỏ hơn cho nội dung phụ */
+    margin: 5px 0; /* Khoảng cách nhỏ */
+    height: 20px; /* Chiều cao cố định */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Giới hạn 1 dòng */
+}
+
+/* Đảm bảo container chính dùng Flexbox để đồng bộ chiều cao */
+.product-detail .row {
+    display: flex;
+    align-items: stretch; /* Hai cột sẽ có chiều cao bằng nhau */
+}
+
+/* Định dạng cột trái (khung ảnh) */
+.product-detail-left {
+    display: flex;
+    flex-direction: column; /* Sắp xếp ảnh chính và ảnh nhỏ theo cột */
+    height: 100%; /* Chiếm toàn bộ chiều cao của row */
+    padding: 10px;
+}
+
+/* Ảnh chính */
+.product-detail-left #mainImage {
+    width: 100%;
+    height: 400px; /* Chiều cao cố định cho ảnh chính */
+    object-fit: contain; /* Giữ tỷ lệ ảnh */
+    background-color: #f8f9fa; /* Nền nhẹ */
+    border-radius: 10px;
+    margin-bottom: 10px; /* Khoảng cách với ảnh nhỏ bên dưới */
+}
+
+/* Danh sách ảnh nhỏ */
+.product-detail-left .product-image-items {
+    display: flex;
+    justify-content: space-between; /* Các ảnh nhỏ cách đều nhau */
+    flex-wrap: nowrap;
+}
+
+.product-detail-left .product-image-items img {
+    width: 22%; /* 4 ảnh chiếm đều 22% mỗi ảnh, tổng gần 100% */
+    height: 100px; /* Chiều cao cố định cho ảnh nhỏ */
+    object-fit: contain;
+    cursor: pointer;
+    border: 2px solid #ddd; /* Viền nhẹ */
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.product-detail-left .product-image-items img:hover {
+    border-color: #007bff; /* Viền xanh khi hover */
+}
+
+/* Định dạng cột phải (nội dung) */
+.product-detail-right {
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Sắp xếp nội dung theo cột */
+    height: 100%; /* Chiếm toàn bộ chiều cao của row */
+}
+
+/* Các phần trong cột phải */
+.product-right-infor, 
+.product-right-des, 
+.product-right-quantity, 
+.product-right-addcart {
+    margin-bottom: 20px; /* Khoảng cách giữa các phần */
+}
+
+/* Tiêu đề và giá trong infor */
+.product-right-infor h5 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-right-infor p {
+    font-size: 20px;
+    font-weight: 700;
+    color: red;
+    margin: 0;
+}
+
+/* Tính năng nổi bật và mô tả */
+.product-right-des h5 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-right-des ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.product-right-des ul li {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Số lượng */
+.product-right-quantity h5 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-quatity-input {
+    display: flex;
+    align-items: center;
+}
+
+.product-quatity-input i {
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+    padding: 5px;
+}
+
+.product-quatity-input i:hover {
+    color: #007bff; /* Màu xanh khi hover */
+}
+
+.product-quatity-input input {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+/* Nút thêm vào giỏ hàng */
+.product-right-addcart button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.product-right-addcart button:hover {
+    background-color: #0056b3; /* Đậm hơn khi hover */
+}
+
+/* Giá bán (gạch ngang) */
+.price-normal s {
+    text-decoration: line-through; /* Gạch ngang giá gốc */
+    color: #999; /* Màu xám cho giá gốc */
+    font-size: 16px; /* Kích thước chữ nhỏ hơn một chút */
+}
+
+/* Giá giảm (hiện tại) */
+.price-normal .text-danger {
+    color: #e74c3c; /* Màu đỏ cho giá giảm */
+    font-weight: bold; /* Chữ đậm */
+    font-size: 18px; /* Kích thước chữ lớn hơn giá gốc */
+}
+
+/* End Product Detail */
+
+/* Product */
+.product {
+    margin: 50px 0;
+}
+.product .nav-pills {
+    margin-left: 20px;
+}
+.product .nav-pills .nav-item .nav-link {
+    border-radius: 20px;
+    margin-right: 10px;
+    color: black;
+}
+.product .nav-pills .nav-item .nav-link.active {
+    background-color: black;
+    color: white;
+}
+.product .carousel-item .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product .carousel-item .col {
+    border: 1px solid #ddd;
+    margin: 0 5px;
+    border-radius: 10px;
+}
+.product .carousel-item .col p {
+    font-weight: 700;
+    color: red;
+}
+
+.product .carousel-item img {
+    width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của cột */
+    height: 200px; /* Đặt chiều cao cố định cho tất cả ảnh */
+    object-fit: contain; /* Cắt ảnh để phù hợp với kích thước mà không méo */
+    display: block;
+    background-color: #f8f9fa;
+}
+.carousel-inner {
+    overflow: hidden; /* Đảm bảo không bị tràn ra ngoài */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    filter: invert(100%); /* Đổi màu nút điều hướng nếu cần */
+    top: 200px;
+    z-index: 1;
+}
+
+/* Định vị các nút dưới chân carousel */
+#carousel-1 .carousel-control-prev,
+#carousel-1 .carousel-control-next,
+#carousel-2 .carousel-control-prev,
+#carousel-2 .carousel-control-next,
+#carousel-3 .carousel-control-prev,
+#carousel-3 .carousel-control-next {
+    top: auto;
+    bottom: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--main-bg, #333); /* Dùng biến hoặc mặc định #333 */
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Đặt vị trí cụ thể cho từng nút */
+#carousel-1 .carousel-control-prev,
+#carousel-2 .carousel-control-prev,
+#carousel-3 .carousel-control-prev {
+    left: 50%;
+    transform: translateX(-60px);
+}
+
+#carousel-1 .carousel-control-next,
+#carousel-2 .carousel-control-next,
+#carousel-3 .carousel-control-next {
+    right: 50%;
+    transform: translateX(60px);
+}
+
+/* Tùy chỉnh icon bên trong */
+#carousel-1 .carousel-control-prev-icon,
+#carousel-1 .carousel-control-next-icon,
+#carousel-2 .carousel-control-prev-icon,
+#carousel-2 .carousel-control-next-icon,
+#carousel-3 .carousel-control-prev-icon,
+#carousel-3 .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(50%);
+}
+
+/* Hiệu ứng hover */
+#carousel-1 .carousel-control-prev:hover,
+#carousel-1 .carousel-control-next:hover,
+#carousel-2 .carousel-control-prev:hover,
+#carousel-2 .carousel-control-next:hover,
+#carousel-3 .carousel-control-prev:hover,
+#carousel-3 .carousel-control-next:hover {
+    background-color: var(--main-hover, #007bff); /* Dùng biến hoặc mặc định xanh dương */
+    opacity: 1;
+    transform: translateX(-60px) scale(1.1); /* Tăng kích thước nhẹ và giữ vị trí */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Bóng đậm hơn */
+}
+
+#carousel-1 .carousel-control-next:hover,
+#carousel-2 .carousel-control-next:hover,
+#carousel-3 .carousel-control-next:hover {
+    transform: translateX(60px) scale(1.1); /* Điều chỉnh riêng cho nút next */
+}
+
+/* Đảm bảo hàng chứa các ô sản phẩm dùng Flexbox */
+.product .carousel-item .row {
+    display: flex;
+    flex-wrap: nowrap; /* Không xuống hàng */
+    justify-content: space-between; /* Phân bố đều khoảng cách */
+    width: 100%; /* Chiếm toàn bộ chiều rộng carousel */
+}
+
+/* Định dạng từng ô sản phẩm với chiều rộng và chiều cao cố định */
+.product .carousel-item .col {
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo cột */
+    flex: 1 1 0; /* Chiều rộng bằng nhau cho tất cả ô */
+    height: 340px; /* Chiều cao cố định */
+    padding: 10px; /* Khoảng cách bên trong */
+    box-sizing: border-box;
+    border: 1px solid #ddd; /* Viền nhẹ */
+    border-radius: 10px; /* Bo góc */
+    background-color: #fff; /* Nền trắng */
+    margin: 0 5px; /* Khoảng cách giữa các ô */
+    overflow: hidden; /* Ẩn nội dung tràn */
+}
+
+/* Ảnh cố định kích thước */
+.product .carousel-item img {
+    width: 100%;
+    height: 200px; /* Chiều cao cố định cho ảnh */
+    object-fit: contain; /* Giữ tỷ lệ ảnh */
+    display: block;
+    background-color: #f8f9fa; /* Nền ảnh */
+}
+
+/* Tiêu đề sản phẩm */
+.product .carousel-item .col h6 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    margin: 10px 0 5px; /* Khoảng cách trên dưới */
+    height: 40px; /* Chiều cao cố định cho tiêu đề */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Giới hạn 2 dòng */
+    -webkit-box-orient: vertical;
+}
+
+/* Giá (bao gồm cả trường hợp có giá giảm và không có giá giảm) */
+.product .carousel-item .col p {
+    margin: 0;
+    height: 40px; /* Chiều cao cố định cho phần giá */
+    line-height: 20px; /* Canh giữa theo chiều dọc */
+    display: flex;
+    align-items: center; /* Căn giữa nội dung trong p */
+    font-size: 14px;
+}
+
+/* Giá gốc (khi có giá giảm) */
+.product .carousel-item .col p s {
+    color: #888; /* Màu xám cho giá gốc */
+    text-decoration: line-through; /* Gạch ngang */
+    font-size: 12px;
+    margin-right: 5px; /* Khoảng cách với giá giảm */
+}
+
+/* Giá giảm (text-danger) */
+.product .carousel-item .col p .text-danger {
+    color: red;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* Khi không có giá giảm, giá thường căn giữa */
+.product .carousel-item .col p:not(:has(.text-danger)) {
+    justify-content: flex-start; /* Căn trái khi chỉ có giá thường */
+    color: #333;
+    font-weight: 700;
+    font-size: 16px;
+}
+/* End Product */
+
+/* Cart */
+.shopping-cart {
+    padding: 40px 0;
+}
+
+.shopping-cart h2 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.shopping-cart .table thead th {
+    background-color: #f8f9fa; /* Màu nền nhẹ cho header table */
+    border-bottom: 2px solid #dee2e6; /* Viền dưới dày hơn một chút */
+}
+
+.shopping-cart .table tbody tr td {
+    vertical-align: middle; /* Canh giữa nội dung theo chiều dọc */
+}
+
+.shopping-cart .table img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover; /* Giúp ảnh vừa khung */
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.shopping-cart .card {
+    border-radius: 0;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.shopping-cart .card-body h4 {
+    font-weight: 700;
+}
+
+.shopping-cart .list-group-item {
+    border: none;
+    padding: 10px 0;
+    font-size: 16px;
+}
+.row .col-md-6, .row .col-md-4 {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.form-control, .form-select {
+    height: 40px;
+    border-radius: 6px;
+}
+
+.shopping-cart .note {
+    margin-top: 15px;
+}
+
+textarea {
+    width: 100%; /* Chiều rộng đầy đủ */
+    height: 80px; /* Chiều cao hợp lý */
+    padding: 10px; /* Tăng khoảng cách chữ */
+    border-radius: 6px; /* Bo góc */
+    border: 1px solid #ccc; /* Viền nhẹ */
+    resize: none; /* Không cho kéo giãn */
+    font-size: 14px;
+}
+
+textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    height: 45px; /* Đồng bộ chiều cao */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+header {
+    background-color: var(--main-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    transition: var(--main-transition);
+}
+
+body {
+    padding-top: 60px; /* Điều chỉnh theo chiều cao header của bạn */
+}
+
+/* End Cart */
+
+/* Footer */
+footer {
+    background-color: var(--main-bg);
+    padding: 50px 10px 10px 20px;
+}
+
+footer .footer-item h6 {
+    padding-bottom: 10px;
+    font-weight: 700;
+}
+/* End Footer */
